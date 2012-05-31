@@ -1,0 +1,180 @@
+html,body{
+  margin:0;
+  padding:0;
+  color:#393939; 
+  width:100%;
+  font:13px Arial, Helvetica, sans-serif;
+}
+a{      
+  color:#393939;
+  text-decoration: none;
+}
+p{     
+  line-height:160%;
+  text-indent: 2em;
+}
+img{
+  max-width: 100%!important;
+  height: auto!important;
+}
+header{
+  text-align:center;
+  color: #0063DC;
+  display: block;
+}
+
+header a{
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+nav{
+  text-align:center;
+  padding-bottom:10px;
+  border-bottom: 1px dashed #D0D0D0;
+}
+
+nav  a{
+  display:inline;
+  color: #393939;
+  text-decoration: none;
+  border-left:0px solid #FFFFFF;
+  transition: .5s;
+  -webkit-transition-duration: .5s;
+  -webkit-transition-timing: ease-out;
+  -moz-transition-duration: .5s;
+  -moz-transition-timing: ease-out;
+}
+
+nav a:hover{
+  background: #393939;
+  color: #FFFFF9;
+  border-left:0px solid #2D96BD;
+}
+
+nav a.active{
+  color: #333;
+  border-left:0px solid #2D96BD;
+  background: #F1F1F1;
+}
+article{
+  width:750px;
+  margin:0 auto;
+}
+
+.post{  
+  font-size:99%;
+  line-height:150%;
+  margin:10px 0 10px 0;;
+
+}
+.center{
+  height:100%;
+  margin:0 auto;
+  text-align:center;
+  vertical-align:middle;
+}
+
+.post a{
+  text-decoration:underline;
+  color: #393939;
+}
+.post a:hover {
+  color:#FFFFF9;
+  background-color:#232F01;
+}
+.post h2,h3{
+  color: #333;
+  font-weight:bold;
+  margin:0;
+}
+
+.post_list{
+  margin:30px 0px 0px 0px;
+  padding:0px;
+  list-style-position:none;
+  list-style-type:none;
+  width:100%;
+  border: 1px solid #D0D0D0;
+  border-bottom: 0px solid #D0D0D0;
+}
+
+.post_list li{
+  display:block;
+  background:#F0F0F0;
+  padding:10px 0px;
+  width:100%;
+  overflow:hidden;
+  border-bottom: 1px solid #D0D0D0;
+}
+
+.list_title{
+  display:block;
+  margin-left:20px;
+  width:60%;
+  clear:both;
+  overflow:hidden;
+  float:left;
+  color:#393939;
+}
+
+.list_date{
+        display:block;
+        width:20%;
+        float:left;
+}
+
+.list_edit{
+  display:block;
+  width:10%;
+  float:left;
+}
+
+.list_delete{
+  display:inline;
+  width:10%;
+  color:red;
+}
+.list_delete a {
+  color:red;
+}
+.list_delete a:hover {
+  color:#FFFFF9;
+  background-color:#393939;
+}
+
+.post select{
+  width:10%;
+}
+
+#pagenavi{
+  text-align:center;
+  margin-bottom: 20px;
+}
+
+#pagenavi a{
+  color: #393939;
+}
+
+#pagenavi a:hover {
+  background-color:#232F01;
+  color:#FFFFF9;
+}
+
+footer,footer a{
+  color:#333;
+  text-align:center;
+  margin-bottom:30px;
+  padding-top:10px;
+  border-top: 1px dashed #D0D0D0;
+}
+
+footer a:hover{
+  color:#2D96BD;
+}
+
+.clear{
+  clear:both;
+}
+

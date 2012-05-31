@@ -1,0 +1,48 @@
+$def with(posts, ne, pre, curPage, pageCount)
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta name="author" content="$config.author" >
+    <link rel="stylesheet" type="text/css" href="$config.static/styles/admin.css" media="screen">
+    <title>$config.site_name | Admin </title>
+  </head>
+  <body style="position:static;">
+    <article>
+    <header><h1><a href="/">$config.site_name</a></h1></header> 
+    <nav>
+      <a href="/admin/index">文章列表</a>
+      <a href="/admin/add_post">添加文章</a>
+      <a href="/admin/logout">退出登录</a>
+    </nav>
+    <div class="post clear">
+      <ul class="post_list">
+        $for post in posts:
+          <li>
+            <span class="list_title"><a href="/admin/edit_post?id=$post.id">$post.title</a></span>
+            <span class="list_date">$post.date</span>
+            <span class="list_edit"><a href="/admin/edit_post?id=$post.id">编辑</a></span>
+            <span class="list_delete"><a href="/admin/del_post?id=$post.id">删除</a></span>
+          </li>
+      </u>
+    </div>
+    $if ne != 0 or pre !=0:
+      <div id="pagenavi">
+        <span class="pagenavi">
+          第$curPage页/$pageCount页
+          $if pre != 0:
+            <a href="/admin/index?p=$pre"> 上一页</a>
+          $if ne != 0:
+            <a href="/admin/index?p=$ne"> 下一页</a>
+        </span>
+      </div>
+    <footer>
+    <span>Copyright &copy; 2011－2012 pblog  all rights reserved</span>
+    <br>
+    <span>Powered by <a href="http://ddk.tsang.github.com/">DDK</a></span>
+    </footer>
+  </article>
+  </body>
+</html>
+

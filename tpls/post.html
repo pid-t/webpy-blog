@@ -1,0 +1,15 @@
+$def with(post, pre_id, ne_id)
+<div class="post">
+  <h1 class="title">$post.title</h1>
+  <p class="byline"><small>发表于<span class="author"> $post.date</span></small></p>
+  <div class="entry">
+    <p>$:post.content</p>
+  </div>
+</div>
+$if pre_id != 0 or ne_id != 0:
+  <div id="post-nav">
+    $if pre_id!=0:
+      <a class="post-nav-pre" href="/post?id=$pre_id">&lt;&lt;&nbsp;PrePost</a>
+    $if ne_id != 0:
+      <a class="post-nav-ne" href="/post?id=$ne_id">NextPost&nbsp;&gt;&gt;</a>
+  </div>

@@ -1,0 +1,62 @@
+$def with(post_id, title, tags, content)
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta name="author" content="$config.author" >
+    <script type="text/javascript" src="$config.static/editor/kindeditor-min.js" ></script>
+    <script type="text/javascript" src="$config.static/editor/lang/zh_CN.js"></script>
+    <script type="text/javascript">
+       	var editor;
+			  KindEditor.ready(function(K) {
+				  editor = K.create('textarea[name="content"]', {
+				    uploadJson:'./uploadImage',
+            allowFileManager : true,
+            width:800,
+            height:400,
+            items:
+              [
+                    'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'cut', 'copy', 'paste',
+                    'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                    'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                    'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+                    'table', 'hr', 'code', 'pagebreak',
+                    'link', 'unlink', '|', 'about'
+              ]
+          })
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="$config.static/styles/admin.css" media="screen">
+    <title>$config.site_name | Admin </title>
+  </head>
+  <body style="position:static;">
+    <article>
+    <header><h1><a href="/">$config.site_name</a></h1></header> 
+    <nav>
+      <a href="/admin/index">文章列表</a>
+      <a href="/admin/add_post">添加文章</a>
+      <a href="/admin/logout">退出登录</a>
+    </nav>
+    <div class="postEditDiv">
+      <form class=".postform" method="POST" action='/admin/updatePost'>
+        <input type="hidden" name="id" value="$post_id" />
+        <span>标题:</span><input type="text" name="title" value="$title" />
+        <br /><br />
+        <span>标签(分号结束)</span><input type="text" name="tag" value="$tags"/>
+        <br/><br />
+        <textarea name="content" style="visibility:hidden;">$content</textarea>
+        <p><input type="submit" value="完成" /></p>
+      </form>
+    </div>
+    <footer>
+    <span>Copyright &copy; 2011－2012 pblog  all rights reserved</span>
+    <br>
+    <span>Powered by <a href="http://ddk.tsang.github.com/">DDK</a></span>
+    </footer>
+  </article>
+  </body>
+</html>
+

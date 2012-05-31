@@ -1,0 +1,47 @@
+$def with(content)
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>$config.site_name | $config.description</title>
+    <meta name="keywords" content="" />
+    <meta name="author" content="$config.author" />
+    <meta name="description" content="$config.description" />
+    <link href="$config.static/styles/default.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="$config.static/styles/google-code-prettify/prettify-min.css" />
+    <script type="text/javascript" src="$config.static/styles/google-code-prettify/prettify.js"></script>
+  </head>
+  <body onload="prettyPrint()">
+    <div id="header">
+	    <h1>$config.site_name</h1>
+	    <h2>By DDK-Tsang</h2>
+    </div>
+    <div id="menu">
+	    <ul>
+		    <li><a href="/">Home</a></li>
+		    <li><a href="/about">About Me</a></li>
+	    </ul>
+    </div>
+    <div id="content">
+	    <div id="left">
+	      $:content
+      </div>
+	    <div id="right">
+		    <h2>ARCHIVES</h2>
+		    <ul>
+			    <li><a href="#">Sagittis Bibendum Erat</a></li>
+			    <li><a href="#">Malesuada Turpis</a></li>
+			    <li><a href="#">Quis Gravida Massa</a></li>
+			    <li><a href="#">Inerat Viverra Ornare</a></li>
+        </ul>
+        <h2>Administration</h2>
+        <ul>
+          <li><a href="/admin/login">Login</a></li>
+        </ul>
+	    </div>
+    </div>
+    <div id="footer">
+	    <p>Copyright &copy; 2012 Designed by <a href="http://ddk-tsang.github.com/" class="link1">DDK-TSANG</a></p>
+    </div>
+  </body>
+</html>

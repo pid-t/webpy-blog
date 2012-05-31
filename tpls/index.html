@@ -1,0 +1,26 @@
+$def with(article, ne, pre)
+$for i in article:
+  <div class="post">
+    <h2 class="title"><a href="/post?id=$i.id">$i.title</a></h2>
+    <p class="byline">
+        <small>发表于 <span class="date"> $i.date </span></small>
+        <small>Tagged with <span class="tags">$i.tag<span></small>
+    </p>
+    <div class="entry">
+      <p>$:i.content</p>
+    </div>
+    <div class="meta">
+      <p class="links">
+        <a href="/post?id=$i.id" class="comments">comments($i.comment)</a> 
+          &nbsp;&bull;&nbsp;&nbsp;
+        <a href="/post?id=$i.id" class="more">Read full post &raquo;</a>
+      </p>
+    </div>
+  </div>
+$if pre != 0 or ne !=0:
+  <div id="post-nav">
+  $if pre!=0:
+    <a class="post-nav-pre" href="/?p=$pre">&lt;&lt;&nbsp;Newer</a>
+  $if ne!=0:
+    <a class="post-nav-ne" href="/?p=$ne">Older&nbsp;&gt;&gt;</a>
+  </div>

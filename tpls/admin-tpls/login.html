@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>$config.site_name | Login</title>
+    <link rel="stylesheet" type="text/css" href="$config.static/styles/login.css" media="screen" />
+  </head>
+  <body>
+    <div id="back_home_link">
+      <a href="/">&lt;&lt;回到博客首页</a>
+    </div>
+    <div id="login-div">
+      <h2>Please login first</h2>
+      <form action="login" method="POST">
+        <table>
+          <tr>
+            <td>用户名:</td>
+            <td><input type="text" maxlength="35" name="username" value="" hint="UserName" /></td>
+          </tr>
+          <tr>
+            <td>密码:</td>
+            <td><input type="PASSWORD" name="password" value="" /></td>
+          </tr>
+        </table>
+        <br />
+        <input type="SUBMIT" value="登录" />
+      </form>
+    </div>
+  </body>
+</html>
