@@ -16,7 +16,7 @@ create table article
 create table comment
 (
 	id int not null auto_increment,
-	content varchar(255) not null,
+	content text not null,
 	author varchar(255) not null,
 	email  varchar(512) not null,
 	homepage varchar(512) not null default '',
@@ -36,7 +36,7 @@ create table user
 
 create table msg
 (
-    id int not null auto_increment,
+  id int not null auto_increment,
 	content varchar(255) not null,
 	author varchar(255) not null,
 	email  varchar(512) not null,

@@ -1,26 +1,5 @@
 $def with(keyword, posts, ne, pre)
-$for post in posts:
-  <div class="post">
-    <h2 class="title"><a href="/post?id=$post.id">$post.title</a></h2>
-    <p class="byline">
-      <small>发表于 <span class="data"> $post.date </span></small>
-      <small>Tagged with <span class="tags">$post.tag</span></small> 
-    </p>
-    <div class="entry">
-      <p>$:post.content</p>
-    </div>
-    <div class="meta">
-      <p class="links">
-        <a href="/post?id=$post.id" class="comments">comments($post.comment)</a>
-        &nbsp;&bull;&nbsp;&nbsp;
-        <a href="/post?id=$post.id" class="more">Read full post &raquo;</a>
-      </p>
-    </div>
-  </div>
-$if pre !=0 or ne != 0:
-  <div id="post-nav">
-  $if pre!=0:
-    <a class="post-nav-pre" href="/tag?key=$keyword&p=$pre">&lt;&lt;&nbsp;Newer</a>
-  $if ne!=0:
-    <a class="post-nav-ne" href="/tag?key=$keyword&p=$ne">Older&nbsp;&gt;&gt;</a>    
-  </div>
+<div class="tag_title">
+  Tag: $keyword
+</div>
+$:render.posts_list(posts, ne, pre)

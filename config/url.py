@@ -11,6 +11,7 @@ urls = (
   '/(.*)/', pre_fix + 'Redirect',
   '/',  pre_fix + 'Index',
   '/post', pre_fix + 'Post',
+  '/post/add-comment', pre_fix + 'Post',
   '/tag', pre_fix + 'Tag',
   '/about',pre_fix + 'About',
   '/admin',admin_app, 

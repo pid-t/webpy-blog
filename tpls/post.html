@@ -1,4 +1,4 @@
-$def with(post, pre_id, ne_id)
+$def with(post, pre_id, ne_id, comments_count, comments)
 <div class="post">
   <h1 class="title">$post.title</h1>
   <p class="byline"><small>发表于<span class="author"> $post.date</span></small></p>
@@ -13,3 +13,52 @@ $if pre_id != 0 or ne_id != 0:
     $if ne_id != 0:
       <a class="post-nav-ne" href="/post?id=$ne_id">NextPost&nbsp;&gt;&gt;</a>
   </div>
+<!-- 评论部分 -->
+<div id="comments">
+  <h3>$comments_count条评论</h3>
+  <div id="comments-list">
+    <ol>
+      $for comment in comments:
+        <li>
+          <div class="comment-box">
+            <p class="comment-user">$comment.author</p>
+            <p class="comment-time">$comment.date</p>
+            <div>
+              <p class="comment-content">$comment.content</p>
+            </div>
+          </div>
+        </li>
+    </ol>
+  </div>
+  <h3>我要评论</h3>
+  <form id="comment-form" action="/post/add-comment" method="POST">
+    <input type="hidden" name="post_id" value="$post.id" />
+    <table>
+      <tr>
+        <td><label for="name-input">Name:</label></td>
+        <td><input type="text" id="name-input" name="author">
+          <span id="name-error" class="error-msg unshown">请填写用户名</span>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="email-input">Email:</label></td>
+        <td><input type="text" id="email-input" name="email" />
+          <span id="email-error" class="error-msg unshown">请填写email</span>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="website-input">Website:</label></td>
+        <td><input type="text" id="website-input" name="website"></td>
+      </tr>
+      <tr>
+        <td><label for="comment-input">Comment:</label></td>
+        <td><textarea id="comment-input" rows="6" cols="30" name="content"></textarea>
+          <span id="comment-error" class="error-msg unshown">说点什么呗</span>
+        </td>
+      </tr>
+    </table>
+    <input id="comment-submit" type="submit" value="提交">
+  </form>
+</div>
+<script type="text/javascript" src="$config.static/scripts/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="$config.static/scripts/comments.js"></script>

@@ -21,10 +21,11 @@ ul {
 
 a {
 	color: #000099;
+	text-decoration:none;
 }
 
 a:hover {
-	text-decoration: none;
+	text-decoration: underline;
 	color: #990000;
 }
 
@@ -99,7 +100,7 @@ a:hover {
 #left .post {
   float: left;
   width: 480px;
-  border-bottom:1px dashed #000099;
+  /*border-bottom:1px dashed #000099;*/
 }
 
 .byline {
@@ -160,4 +161,51 @@ a:hover {
 	margin: 0px;
 	padding: 0px;
 	font-size: x-small;
+}
+#comment-form{
+  padding-bottom:0.5em;
+}
+#comments {
+  display:block;
+  width:480px;
+  padding-top:10px;
+  float:left;
+}
+.comment-box {
+  padding-left:0.5em;
+  margin-bottom:0.5em;
+  border:1px dashed #999;
+}
+.comment-content{
+  font-size:16px;
+  color:black;
+  font-style:normal;
+}
+.comment-user{
+  font-size:14px;
+  color:#284569;
+  font-style:italic;
+}
+.comment-time{
+  font-size:10px;
+  color:#999;
+  margin-top:-0.5em;
+}
+.error-msg {
+  color:#AA2105;
+  font-size:12px;
+  font-style:normal;
+}
+.unshown{
+  visibility:hidden;
+}
+.shown{
+  visibility:visible;
+}
+.tag_title{
+  color:#999;
+  margin-top:0.5em;
+  font-style:italic;
+  font-weight:bold;
+  font-size:18px;
 }

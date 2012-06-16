@@ -1,0 +1,28 @@
+$def with(posts, ne, pre)
+$for i in posts:
+  <div class="post">
+    <h2 class="title"><a href="/post?id=$i['id']">$i['title']</a></h2>
+    <p class="byline">
+      <small>发表于 <span class="date"> $i['date']</span></small>
+      $ tags = i['tags'].split(';')
+      <small>Tagged with
+        $for tag in tags:
+          <a class="tags" href="/tag?key=$tag">$tag</a>&nbsp;
+      </small>
+    </p>
+    <div class="entry">
+     <p>$:i['content']</p> 
+    </div>
+    <div class="meta">
+      <p class="links">
+        <a href="/post?id=$i['id']#comments" class="comments">comments($i['c_count'])</a>
+      </p>
+    </div>
+  </div>
+$if pre != 0 or ne != 0:
+  <div id="post-nav">
+  $if pre!=0:
+    <a class="post-nav-pre" href="/?p=$pre">&lt;&lt;&nbsp;Newer</a>
+  $if ne!=0:
+    <a class="post-nav-ne" href="/?=$ne">Older&nbsp;&gt;&gt;</a>
+  </div>
