@@ -15,6 +15,7 @@ config = web.storage(
     description='A Simple Python Blog',
     author='ddk',
 )
-
+image_upload_dir = r"/home/ddk/opensource/python/webpy-blog/static/upload/imgs/"
+file_upload_dir = r"/home/ddk/opensource/python/webpy-blog/static/upload/"
 web.template.Template.globals['config'] = config
 web.template.Template.globals['render'] = post_content

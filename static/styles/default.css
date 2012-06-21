@@ -53,7 +53,7 @@ a:hover {
 
 #menu {
 	width: 700px;
-	height: 1.5em;
+	height: 1.6em;
 	margin: 0px auto;
 	border: 1px solid #000099;
 }
@@ -85,7 +85,7 @@ a:hover {
 
 #content {
 	width: 700px;
-	margin: 0px auto;
+	margin: 0 auto;
 }
 
 #content h2 {
@@ -107,7 +107,6 @@ a:hover {
   font-weight:normal;
   font-style:italic;
   color:#666;
-  line-height:11px;
 }
 
 .date {
@@ -123,7 +122,10 @@ a:hover {
   width: 480px;
 }
 .meta {
-  padding-top:-10px;
+  width: 480px;
+  float: left;
+  height:auto;
+  line-height:0.3em;
 }
 
 #post-nav {

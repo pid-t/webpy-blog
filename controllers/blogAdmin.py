@@ -11,13 +11,19 @@ db = settings.db
 adminRender = settings.admin_render
 T_USER = 'user'
 T_ARTICLE = 'article'
+T_COMMENT = 'comment'
 salt = '&A102ad@#)'
+img_upload_dir = settings.image_upload_dir
+
+def isAdmin():
+  isAdmin = True if (web.ctx.session.id == 1) else False
+  return isAdmin
 
 class Login:
   ''' login logic '''
 
   def GET(self):
-    if web.ctx.session.id == 1:
+    if isAdmin():
       raise web.seeother('/index')
     return adminRender.login()
   
@@ -52,8 +58,8 @@ class Logout:
 class Index:
   ''' going to admin index logic '''
   def GET(self):
-    if web.ctx.session.id!=1:
-      return adminRender.login()
+    if not isAdmin():
+      raise web.seeother('/login')
     try:
       page = int(web.input(p = '1').p) -1;
       query = db.select(T_ARTICLE,what='id,title,date',limit='%d,5'%(page*5),order='date DESC')
@@ -76,22 +82,25 @@ class Index:
 class AddPost:
   '''add post login '''
   def GET(self):
-    if web.ctx.session.id != 1:
-      return adminRender.login()
+    if not isAdmin():
+      raise web.seeother('/login')
     return adminRender.post_edit(0,'','','')
 
 class UploadImage:
   ''' upload and save the images '''
   def POST(self):
+    if not isAdmin():
+      raise web.seeother('/login')
+
     files = web.input(imgFile={})
     imgDomain = '/static/upload/imgs/'
-    saveDir = '/home/ddk/opensource/python/pblog/static/upload/imgs/'
+    #saveDir = '/home/ddk/opensource/python/webpy-blog/static/upload/imgs/'
     web.header('Content-Type','application/json')
     if 'imgFile' in files:
       print 'upload image via post method'
       filePath = files.imgFile.filename.replace('\\','/')
       filename = filePath.split('/')[-1]
-      savePath = saveDir + filename
+      savePath = img_upload_dir + filename
       fout = open(savePath,'w')
       fout.write(files.imgFile.file.read())
       fout.close()
@@ -105,6 +114,9 @@ class EditPost:
   ''' going to edit post logic '''
   
   def GET(self):
+    if not isAdmin():
+      raise web.seeother('/login')
+
     post_id = int(web.input(id='-1').id)
     if post_id == -1:
       return adminRender.error()
@@ -118,6 +130,8 @@ class EditPost:
 class UpdatePost:
   ''' update post logic'''
   def POST(self):
+    if not isAdmin():
+      raise web.seeother('/login')
     data = web.input(id='0', title='',content='',tag='')
     post_id = int(data.id)
     isNewPost = False
@@ -135,8 +149,11 @@ class UpdatePost:
 class DeletePost:
   '''Delete post login '''
   def GET(self):
+    if not isAdmin():
+      raise web.seeother('/login');
     post_id = int(web.input(id='0').id);
     if post_id == 0:
       adminRender.error()
     db.delete(T_ARTICLE, where='id=$post_id', vars={'post_id':post_id})
+    db.delete(T_COMMENT, where='articleid=$post_id', vars = {'post_id':post_id})
     raise web.seeother('/index')
