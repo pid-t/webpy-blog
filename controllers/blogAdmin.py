@@ -6,18 +6,25 @@ import md5
 import random
 import json
 from config import settings
+from pblog import T_USER, T_ARTICLE, T_COMMENT, T_TAG
 
 db = settings.db
 adminRender = settings.admin_render
-T_USER = 'user'
-T_ARTICLE = 'article'
-T_COMMENT = 'comment'
 salt = '&A102ad@#)'
 img_upload_dir = settings.image_upload_dir
 
 def isAdmin():
-  isAdmin = True if (web.ctx.session.id == 1) else False
-  return isAdmin
+  if web.ctx.session.id == 0:
+    return False
+  data = db.select(T_USER, where="id="+str(web.ctx.session.id))
+  if(len(data) == 0):
+    return False
+  data = data[0]
+  if md5.new(data.user + data.password + str(web.ctx.session.seed)).hexdigest() == web.ctx.session.hash:
+    return True
+  else:
+    return False
+
 
 class Login:
   ''' login logic '''

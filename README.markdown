@@ -21,5 +21,3 @@
 Released under the MIT License:
 
 * [www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
-
-

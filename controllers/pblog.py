@@ -19,18 +19,6 @@ db = settings.db
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-def isAdmin():
-  if session.id == 0:
-    return False
-  data = db.select(usert,where="id="+str(session.id))
-  if(len(data) == 0):
-    return False
-  data = data[0]
-  if md5.new((data.user + data.password + str(session.seed)).hexdigest()) == session.hash:
-    return True
-  else:
-    return False
-
 class Redirect:
   def GET(self, path):
     web.seeother('/' + path)
